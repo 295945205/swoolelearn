@@ -8,11 +8,15 @@
 class Crawler
 {
     private $url;
+    private $redis;
     private $toVisit = [];
     private $loaded = false;
     public function __construct($url)
     {
         $this->url = $url;
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+        $this->redis=$redis;
     }
 
     public function visitOneDegree()
@@ -47,22 +51,23 @@ class Crawler
         }
     }
 
-    private function visit($url, $root = false)
+    public function visit($url, $root = false)
     {
         $urlInfo = parse_url($url);
-        Swoole\Async::dnsLookup($urlInfo['host'], function ($domainName, $ip) use($urlInfo, $root) {
-            $cli = new swoole_http_client($ip, 80);
-            $cli->setHeaders([
-                'Host' => $domainName,
-                'Accept' => 'text/html,application/xhtml+xml,application/xml',
-                'Accept-Encoding' => 'gzip',
-            ]);
-            $cli->get($urlInfo['path'], function ($cli) use ($root) {
-                if ($root) {
-                    $this->loadPage($cli->body);
-                    $this->loaded = true;
-                }
-            });
+        $cli = new swoole_http_client($urlInfo['host'], 80);
+        $cli->setHeaders([
+            'Host' => $urlInfo['host'],
+            'Accept' => 'text/html,application/xhtml+xml,application/xml',
+            'Accept-Encoding' => 'gzip',
+        ]);
+        $cli->get($urlInfo['path'], function ($cli) use ($root) {
+            sleep(1);
+            $this->redis->lPush('key1',microtime(true));
+            if ($root) {
+                $this->loadPage($cli->body);
+                $this->loaded = true;
+            }
+            $cli->close();
         });
     }
 }
@@ -71,10 +76,14 @@ $start = microtime(true);
 
 $url = 'http://www.swoole.com/';
 $ins = new Crawler($url);
-$ins->visitOneDegree();
-
+//$ins->visitOneDegree();
+$ins->visit($url);
+$ins->visit($url);
+$ins->visit($url);
+$ins->visit($url);
+$ins->visit($url);
 $timeUsed = microtime(true) - $start;
 echo "time used: " . $timeUsed;
-
+exit();
 
 

@@ -11,7 +11,7 @@ $redis = new Redis();
 //$redis->lPush('key1',1,2,3,4,5,6,7,8,9,10,11,12,13);
 //$redis->close();
 //exit();
-$workerNum = 10;
+$workerNum = 5;
 $pool = new Swoole\Process\Pool($workerNum);
 
 $pool->on("WorkerStart", function ($pool, $workerId) {
@@ -22,7 +22,7 @@ $pool->on("WorkerStart", function ($pool, $workerId) {
     while (true) {
         $msgs = $redis->brpop($key, 2);
         if ( $msgs == null) continue;
-        echo $msgs."\n";
+        echo var_dump($msgs);
     }
 });
 
