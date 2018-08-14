@@ -3,6 +3,25 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$USER_HOME$/Downloads/swoole-ide-helper" />
+      <path value="$PROJECT_DIR$/spider/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/spider/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/spider/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/spider/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/spider/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/spider/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/spider/vendor/danielstjules/stringy" />
+      <path value="$PROJECT_DIR$/spider/vendor/composer" />
+      <path value="$PROJECT_DIR$/spider/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/spider/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/spider/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/spider/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/spider/vendor/illuminate/validation" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/spider/vendor/symfony/css-selector" />
     </include_path>
   </component>
 </project>

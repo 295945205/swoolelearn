@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/danielstjules/stringy" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/illuminate/container" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/illuminate/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/illuminate/database" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/illuminate/support" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/illuminate/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/css-selector" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/dom-crawler" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/spider/vendor/symfony/translation" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
