@@ -15,17 +15,17 @@ class autoloader
 
     private static function classLoader($class)
     {
-//        if(strstr('spider',$class)!==null){
-//            $fileName=str_replace('\\',DIRECTORY_SEPARATOR,__DIR__.$class.'.php');
-//        }
-//        else{
+        if(strstr('\\',$class)!==null){
+            $fileName=str_replace('\\',DIRECTORY_SEPARATOR,ROOT_PATH.DIRECTORY_SEPARATOR.$class.'.php');
+        }
+        else{
             $fileName=APPLICATION_PATH.DIRECTORY_SEPARATOR.$class.'.php';
-//        }
+        }
         if(file_exists($fileName)){
             require $fileName;
         }
         else{
-            echo 'not find class '.$class.'\n';
+            echo 'not find class '.$fileName.'\n';
         }
     }
 }

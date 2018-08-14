@@ -5,7 +5,7 @@
  * Date: 2018/8/13
  * Time: 下午6:42
  */
-//namespace spider\application;
+namespace application;
 
 class getContent implements application{
 

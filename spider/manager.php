@@ -6,7 +6,6 @@
  * Date: 2018/8/13
  * Time: 下午6:35
  */
-
 class manager
 {
     public $pool;
@@ -19,6 +18,7 @@ class manager
     public function run($className)
     {
         $this->pool->on("WorkerStart",function ()use ($className){
+            $className = "\\application\\".$className;
             $className::run();
         });
 
