@@ -1,7 +1,0 @@
-{
-  "name": "szh/swooleLearn",
-  "description": "learn swoole",
-  "require": {
-    "guzzlehttp/guzzle": "^6.3"
-  }
-}
