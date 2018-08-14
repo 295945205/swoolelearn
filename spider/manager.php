@@ -10,7 +10,7 @@ class manager
 {
     public $pool;
 
-    public function __construct($workerNum = 5)
+    public function __construct($workerNum = 4)
     {
         $this->pool = new \Swoole\Process\Pool($workerNum);
     }

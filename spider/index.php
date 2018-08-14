@@ -18,7 +18,7 @@ $longopt = array(
     'worker_num::'
 );
 $param = getopt('',$longopt);
-$workerNum = isset($param['worker_num'])?$param['worker_num']:0;
+$workerNum = isset($param['worker_num'])?$param['worker_num']:4;
 if($workerNum && is_integer($workerNum) && 0<$workerNum && $workerNum<5000){
     $manager = new manager($workerNum);
 }
