@@ -17,12 +17,13 @@ class manager
 
     public function run($className)
     {
-        $this->pool->on("WorkerStart",function ()use ($className){
-            $className = "\\application\\".$className;
-            $className::run();
-        });
-
-        $this->pool->start();
+//        $this->pool->on("WorkerStart",function ($pool,$workerId)use ($className){
+//            $className = "\\application\\".$className;
+//            $className::run();
+//        });
+//
+//        $this->pool->start();
+        \application\test::run();
     }
 
 }

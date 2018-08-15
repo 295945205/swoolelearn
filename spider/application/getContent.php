@@ -7,24 +7,38 @@
  */
 namespace application;
 
+use GuzzleHttp\Client;
+use models\Account;
+use Symfony\Component\DomCrawler\Crawler;
+
 class getContent implements application{
 
     public static function run()
     {
         $redis = new \Redis();
-        $redis->pconnect('127.0.0.1', 6379);
-        $url = "http://www.swoole.com/";
-        $urlInfo = parse_url($url);
-        $cli = new \swoole_http_client($urlInfo['host'], 80);
-        $cli->setHeaders([
-            'Host' => $urlInfo['host'],
-            'Accept' => 'text/html,application/xhtml+xml,application/xml',
-            'Accept-Encoding' => 'gzip',
-        ]);
-        $cli->get($urlInfo['path'], function ($cli) use ($redis) {
-            sleep(5);
-            $redis->lPush('key1',microtime(true));
-            $cli->close();
-        });
+        $redis->connect('127.0.0.1', 6379);
+        $nick_name = $redis->rPop('nick_name');
+        if(empty($nick_name)){
+            echo "list is empty.\n";
+            sleep(1);
+            $redis->close();
+            exit();
+        }
+        else{
+            $account = new Account();
+            $url= $nick_name."/followers";
+            $client = new Client([
+                'base_uri' => 'https://www.zhihu.com/people/',
+                'timeout' => 2,
+            ]);
+            $response = $client->get($url);
+            $code = $response->getStatusCode();
+            if($code != '200'){
+                echo "请求失败";
+                $redis->lPush('nick_name',$nick_name);
+                exit();
+            }
+            $crawler = new Crawler();
+        }
     }
 }
