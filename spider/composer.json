@@ -1,0 +1,11 @@
+{
+  "name": "szh/spider",
+  "description": "learn swoole",
+  "require": {
+    "guzzlehttp/guzzle": "^6.3",
+    "illuminate/database": "5.0.33",
+    "illuminate/validation": "5.0.33",
+    "symfony/dom-crawler": "^4.1",
+    "symfony/css-selector": "^4.1",
+  }
+}
