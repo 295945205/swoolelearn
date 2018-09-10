@@ -2,18 +2,19 @@
 /**
  * Created by PhpStorm.
  * User: zehao
- * Date: 2018/8/15
- * Time: 下午5:39
+ * Date: 2018/8/21
+ * Time: 上午10:24
  */
+namespace application\zhenguo;
 
-namespace application;
-
+use application\application;
 use GuzzleHttp\Client;
 use models\House;
 use Symfony\Component\DomCrawler\Crawler;
 
-class test implements application
+class getHouseInfo implements application
 {
+
     public static $redis;
     public static $crawler;
     public static $client;
@@ -26,7 +27,7 @@ class test implements application
 
         self::$client = new Client([
             'base_uri' => 'https://phoenix.meituan.com/housing/',
-            'timeout' => 2,
+            'timeout' => 4,
             'headers'=>[
                 'User-Agent'=>'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
                 'Host'=>'phoenix.meituan.com',
@@ -62,7 +63,7 @@ class test implements application
             $houseNum = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[1]/div[2]/span[2]')->text();
             $houseArea = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[1]/div[2]/span[3]')->text();
             $housePerson = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[1]/div[2]/span[4]')->text();
-            $houseLocation = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[5]/p')->text();
+            $houseLocation = self::$crawler->filter('.product-detail__location')->text();
 
             $fangdongName = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[2]/dl/dd[1]/span/a')->text();
             $fangdongImg = self::$crawler->filterXPath('//*[@id="J-layout"]/div[2]/div/div[2]/div/div[2]/section[2]/dl/dt/a/img')->attr('src');
@@ -81,4 +82,5 @@ class test implements application
             $roomId = self::$redis->incr("roomId");
         }
     }
+
 }

@@ -37,7 +37,7 @@ $longopt = array(
 
 //获取参数并分发路由
 $param = getopt('',$longopt);
-$workerNum = isset($param['worker_num'])?$param['worker_num']:4;
+$workerNum = isset($param['worker_num'])?$param['worker_num']:8;
 if($workerNum && is_integer($workerNum) && 0<$workerNum && $workerNum<5000){
     $manager = new manager($workerNum);
 }

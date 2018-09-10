@@ -10,20 +10,20 @@ class manager
 {
     public $pool;
 
-    public function __construct($workerNum = 4)
+    public function __construct($workerNum = 8)
     {
         $this->pool = new \Swoole\Process\Pool($workerNum);
     }
 
     public function run($className)
     {
-//        $this->pool->on("WorkerStart",function ($pool,$workerId)use ($className){
-//            $className = "\\application\\".$className;
-//            $className::run();
-//        });
-//
-//        $this->pool->start();
-        \application\test::run();
+        $this->pool->on("WorkerStart",function ($pool,$workerId)use ($className){
+            $className = "\\application\\".$className;
+            $className::run();
+        });
+
+        $this->pool->start();
+//        \application\test::run();
     }
 
 }
