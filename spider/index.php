@@ -31,7 +31,8 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 $longopt = array(
-    'type:',
+    'action:',
+    'project:',
     'worker_num::'
 );
 
@@ -44,8 +45,10 @@ if($workerNum && is_integer($workerNum) && 0<$workerNum && $workerNum<5000){
 else{
     $manager = new manager();
 }
-$className = $param['type'];
-if(file_exists(APPLICATION_PATH.DIRECTORY_SEPARATOR.$className.'.php'))
+$action = $param['action'];
+$projectName = $param['project'];
+$className = $projectName.'\\'.$action;
+if(file_exists(APPLICATION_PATH.DIRECTORY_SEPARATOR.$projectName.DIRECTORY_SEPARATOR.$action.'.php'))
 {
     $manager->run($className);
 }
